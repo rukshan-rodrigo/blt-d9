@@ -1,7 +1,5 @@
 project:
   machine_name: blt-d9
-  # Used for enforcing correct git commit msg syntax.
-  prefix: BLT
   human_name: 'BLTD9'
   # This will be used as the local uri for all developers.
   profile:
