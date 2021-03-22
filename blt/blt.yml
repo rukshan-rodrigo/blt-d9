@@ -26,7 +26,6 @@ git:
     commit-msg: false
     pattern: false
     pre-commit: false
-    pre-push: false
 deploy:
   # When manually deploying a tag, also tag the source repository.
   tag_source: true
