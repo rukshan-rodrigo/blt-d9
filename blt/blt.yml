@@ -22,6 +22,10 @@ cm:
 git:
   default_branch: main
   remotes: {  }
+  hooks:
+    commit-msg: false
+    pattern: false
+    pre-commit: false
 deploy:
   # When manually deploying a tag, also tag the source repository.
   tag_source: true
