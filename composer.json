@@ -1,18 +1,22 @@
 {
     "name": "acquia/drupal-recommended-project",
-    "description": "Acquia-compatible Drupal application based on the Drupal Recommended Project",
+    "description": "Acquia-compatible Drupal application based on the Drupal Recommended Project - Adopted for Accenture by Stephen R. Rodrigo.",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Acquia Engineering",
+            "name": "Accenture Acquia",
             "homepage": "https://www.acquia.com",
             "role": "Maintainer"
+        },
+        {
+            "name": "Stephen Rodrigo",
+            "email": "s.rodrigo@accenture.com",
+            "role": "Developer"
         }
     ],
     "require": {
         "acquia/blt": "^12",
         "acquia/blt-behat": "^1.1",
-        "acquia/lightning": "^5",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6",
         "drupal/core-composer-scaffold": "^9",

@@ -1,14 +1,12 @@
 project:
   machine_name: blt-d9
-  # Used for enforcing correct git commit msg syntax.
-  prefix: BLT
   human_name: 'BLTD9'
   # This will be used as the local uri for all developers.
   profile:
     name: standard
   local:
     protocol: http
-    hostname: 'blt-d9.lndo.site:8000'
+    hostname: 'blt-d9.lndo.site'
 # Configuration settings for new git repository.
 cm:
   strategy: core-only
@@ -22,8 +20,12 @@ cm:
       sync:
         path: ${cm.core.path}
 git:
-  default_branch: master
+  default_branch: main
   remotes: {  }
+  hooks:
+    commit-msg: false
+    pattern: false
+    pre-commit: false
 deploy:
   # When manually deploying a tag, also tag the source repository.
   tag_source: true
@@ -40,3 +42,6 @@ drush:
   default_alias: '${drush.aliases.local}'
 # An array of modules to be enabled or uninstalled automatically in local, ci,
 # and deploy contexts.
+disable-targets:
+  tests:
+    security-composer: true
