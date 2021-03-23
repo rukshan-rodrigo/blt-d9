@@ -1,17 +1,3 @@
-setup.strategy: sync
-drush:
-  # You can set custom project aliases in drush/sites/*.site.yml.
-  aliases:
-    # The remote environment from which the database will be pulled.
-    remote: '${project.machine_name}.test'
-    # The local environment against which all local drush commands are run.
-    local: self
-    # The drush alias against which all ci commands are run.
-    ci: self
-    # The default drush alias to be used when no environment is specified.
-  default_alias: '${drush.aliases.local}'
-drush.debug: false
-
 tests.run-server: true
 tests.server.url: '${project.local.uri}'
 
