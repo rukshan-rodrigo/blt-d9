@@ -1,22 +1,46 @@
-build-job:
+image: acquia/ads-local:lando-php-7.3-nodejs-10
+
+stages:
+  - build
+  - validate
+
+variables:
+  APP_NAME: BLT-Project
+  BLT: ./vendor/bin/blt
+
+cache:
+  paths:
+    - $HOME/.npm
+    - $HOME/.nvm
+    - vendor
+    - docroot/core
+    - docroot/modules/contrib
+    - docroot/themes/contrib
+    - docroot/profiles/contrib
+    - docroot/libraries
+
+before_script:
+  # Setup SSH key to push artifact to deploy to server
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - echo "$DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/id_rsa
+  # Install rsync as needed by BLT
+  # - apk add rsync --no-cache
+
+build:
   stage: build
+  allow_failure: false
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - composer validate --no-check-all --ansi
+    - composer install
+    - npm install npm@latest -g
 
-test-job1:
-  stage: test
+validate:
+  stage: validate
   script:
-    - echo "This job tests something"
-
-test-job2:
-  stage: test
-  script:
-    - echo "This job tests something, but takes more time than test-job1."
-    - echo "After the echo commands complete, it runs the sleep command for 20 seconds"
-    - echo "which simulates a test that runs 20 seconds longer than test-job1"
-    - sleep 20
-
-deploy-prod:
-  stage: deploy
-  script:
-    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
+    # Install required dependencies using composer
+    - composer install --ignore-platform-reqs
+    # Validate composer, phpcs ...
+    - $BLT validate
