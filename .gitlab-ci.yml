@@ -81,6 +81,8 @@ setup_and_test:
 
 #deploy:
 #  stage: deploy
+#  only:
+#    - master
 #  extends:
 #    - .global_cache
 #    - build

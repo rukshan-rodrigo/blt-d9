@@ -1,5 +1,5 @@
-# My Project
-This repository consists of the blt-d9.
+# Accenture Drupal 9 with BLT, GITLAB and LANDO
+This repository consists of the Drupal 9, BTL, LANDO and GITLAB.
 
 # Getting Started
 This project is based on BLT 12.x with Lando local env, an open-source project template and tool that enables building, testing, and deploying Drupal installations following Acquia Professional Services best practices. While this is one of many methodologies, it is our recommended methodology.
@@ -7,74 +7,41 @@ This project is based on BLT 12.x with Lando local env, an open-source project t
 1. Review the [Required / Recommended Skills](https://docs.acquia.com/blt/developer/skills/) for working with a BLT project.
 2. Ensure that your computer meets the minimum installation requirements (and then install the required applications). See the [System Requirements](https://docs.acquia.com/blt/install/).
 
-# If Starting From Scratch 
-1. Download the latest version of Drupal
-```
-$ composer create-project --no-interaction acquia/drupal-recommended-project blt-d9
-```
 
-2. Confirm BLT is added as a composer dependency 
-```
-$ composer require acquia/blt:^12.0 --no-update
-```
-
-3. Add the blt-lando plugin
-```
-$ composer require mikemadison13/blt-lando
-```
-
-4. Run composer update 
-```
-$ composer update
-```
-
-5. Setup your container settings by modifying your .lando.yml file. 
-```
-$ blt recipes:vm:lando
-```
-
-
-# Working from an existing project
-1. Request access to organization that owns the project repo in GitHub (if needed).
-2. Fork the project repository in GitHub.
+# How to start
+1. Request access to organization that owns the project repo in GitLab (if needed).
+2. Fork the project repository in GitLab.
 3. Request access to the Acquia Cloud Environment for your project (if needed).
-4. Setup a SSH key that can be used for GitHub and the Acquia Cloud (you CAN use the same key).
+4. Setup a SSH key that can be used for GitLab and the Acquia Cloud (you CAN use the same key).
     1. [Setup GitHub SSH Keys](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
     2. [Setup Acquia Cloud SSH Keys](https://docs.acquia.com/acquia-cloud/ssh/generate)
 5. Clone your forked repository. By default, Git names this "origin" on your local.
 ```
-$ git clone git@github.com:<account>/blt-d9.git
-```
-6. To ensure that upstream changes to the parent repository may be tracked, add the upstream locally as well.
-```
-$ git remote add upstream git@github.com:acquia-pso/blt-d9.git
+$ git clone git@gitlab.com:dev808/orora.git
+
 ```
 
-7. Install Composer dependencies.
+6. Install Composer dependencies.
 After you have forked, cloned the project and setup your blt.yml file install Composer Dependencies. (Warning: this can take some time based on internet speeds.)
 ```
 $ composer install
 ```
-8. Setup Lando.
+7. Setup Lando.
 Setup the container by modifying your .lando.yml  with the configuration from this repositories [configuration files](#important-configuration-files).
 ```
 $ lando start
 ```
 
-9. Setup a local Drupal site with an empty database.
+8. Setup a local Drupal site with an empty database.
 Use BLT to setup the site with configuration.  If it is a multisite you can identify a specific site.
 ```
 $ lando blt setup
 ```
-or
-```
-$ lando blt setup --site=[sitename]
-```
 
-10. Log into your site with drush.
+9. Log into your site with drush.
 Access the site and do necessary work at #LOCAL_DEV_URL by running the following commands.
 ```
-$ cd web
+$ cd docroot
 $ lando drush uli
 ```
 
@@ -99,11 +66,11 @@ $ lando blt sync
 ```
 
 ---
-# To start developing every time 
+# To start developing every time
 
-1. Pull from the github repository 
+1. Pull from the github repository
 ```
-git pull upstream develop
+git pull
 ```
 
 2. Create a new feature branch from develop
@@ -116,12 +83,12 @@ After you have forked, cloned the project and setup your blt.yml file install Co
 ```
 $ composer install
 ```
-4. Setup container 
+4. Setup container
 ```
 $ lando start
 ```
 
-5. Setup a local Drupal site with an empty database. The blt-cohesion composer package will run all necessary site studio commands. 
+5. Setup a local Drupal site with an empty database. The blt-cohesion composer package will run all necessary site studio commands.
 Use BLT to setup the site with configuration.
 ```
 $ lando blt setup
@@ -137,13 +104,13 @@ Access the site and do necessary work at #LOCAL_DEV_URL by running the following
 $ cd docroot
 $ lando drush uli
 ```
-    
 
 
-### To Create a Pull Request. 
 
-1. After you make changes inside your local drupal site. Export your configuration from the database to your configuration. 
- Export your drupal config changes if you have them. 
+### To Create a Pull Request.
+
+1. After you make changes inside your local drupal site. Export your configuration from the database to your configuration.
+ Export your drupal config changes if you have them.
  ```
 $ lando drush cex
 ```
@@ -152,7 +119,7 @@ To export Site studio configuration to your site studio package run the followin
 $ lando drush sync:export
 ```
 
-2. commit your changes and push your changes to your origin repository. 
+2. commit your changes and push your changes to your origin repository.
 ```
 $ git status
 $ git add -p
@@ -161,29 +128,43 @@ $ git push --set-upstream origin blt-d9-000-new-site-change
 ```
 
 3. Navigate to Github and open a pull request against the upstream. Assign a person on your team to review.
-  
+
+### How to run code validations in local.
+ ```
+$ lando blt validate
+```
+
+### How to run tests in local.
+ ```
+$ lando blt tests
+```
+
+# GitLab CI/CD process overview
+###To use GitLab CI/CD:
+
+1. Ensure you have runners available to run your jobs.
+2. If you don’t have a runner, [install GitLab Runner](https://docs.gitlab.com/runner/install/) and register a runner for your instance, project, or group.
+3. Inspect the .gitlab-ci.yml file at the root of your repository. This file is where you define your CI/CD jobs.
+When you commit the file to your repository, the runner runs your jobs. The job results are displayed in a pipeline.
+
 
 
 # Resources
 
-Additional [BLT documentation](https://docs.acquia.com/blt/) may be useful. You may also access a list of BLT commands by running this:
-```
-$ blt
-```
+* [BLT documentation](https://docs.acquia.com/blt/)
+* [GitLab documentation](https://docs.gitlab.com/ee/README.html)
+* [Acquia BLT Gitlab Pipelines integration](https://github.com/mikemadison13/blt-gitlab-pipelines)
 
-Note the following properties of this project:
-* Primary development branch: Develop
-* Local site URL: http://blt-d9.lndo.site
-
-## Working With a BLT Project
-BLT projects are designed to instill software development best practices (including git workflows). \
-Our BLT Developer documentation includes an [example workflow](https://docs.acquia.com/blt/developer/dev-workflow/).
 
 ### Important Configuration Files
 BLT uses a number of configuration (`.yml` or `.json`) files to define and customize behaviors. Some examples of these are:
 
-* `blt/blt.yml` (formerly blt/project.yml prior to BLT 9.x)
+* `blt/blt.yml` (Global blt configuration)
 * `blt/local.blt.yml` (local only specific blt configuration)
-* `landio.yml` (Lando configuration)
+* `blt/ci.blt.yml` (ci/cd specific blt configuration)
+* `lando.yml` (Lando configuration)
+* `gitlab-ci.yml` (GitLab CD/CI configuration)
 * `drush/sites` (contains Drush aliases for this project)
 * `composer.json` (includes required components, including Drupal Modules, for this project)
+* `docroot/sites/default/settings/local.settings.php` (Database + local configuration for Lando)
+* `docroot/sites/default/settings/ci.settings.php` (Database configuration for CD/CI docker container)
