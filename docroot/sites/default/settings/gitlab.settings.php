@@ -10,12 +10,7 @@
  *
  * @see ci.settings.php
  */
-$databases['default']['default'] = [
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
-  'host' => '127.0.0.1',
-  'port' => '3306',
-  'driver' => 'mysql',
-  'prefix' => '',
-];
+$databases['default']['default']['host'] = 'mysql';
+$databases['default']['default']['password'] = 'drupal';
+$databases['default']['default']['username'] = 'drupal';
+$databases['default']['default']['database'] = 'drupal';
