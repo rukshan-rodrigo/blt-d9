@@ -1,11 +1,9 @@
 image: acquia/ads-local:lando-php-7.3-nodejs-10
 
 stages:
-  - build
   - validate
 
 variables:
-  APP_NAME: BLT-Project
   BLT: ./vendor/bin/blt
 
 cache:
@@ -18,24 +16,6 @@ cache:
     - docroot/themes/contrib
     - docroot/profiles/contrib
     - docroot/libraries
-
-before_script:
-  # Setup SSH key to push artifact to deploy to server
-  - mkdir -p ~/.ssh
-  - eval $(ssh-agent -s)
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  - echo "$DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa && chmod 0600 ~/.ssh/id_rsa
-  - ssh-add ~/.ssh/id_rsa
-  # Install rsync as needed by BLT
-  # - apk add rsync --no-cache
-
-build:
-  stage: build
-  allow_failure: false
-  script:
-    - composer validate --no-check-all --ansi
-    - composer install
-    - npm install npm@latest -g
 
 validate:
   stage: validate
