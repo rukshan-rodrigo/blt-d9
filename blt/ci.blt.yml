@@ -1,0 +1,8 @@
+tests.run-server: true
+tests.server.url: '${project.local.uri}'
+
+behat.web-driver: chrome
+
+# The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to test the site.
+project.local.hostname: 127.0.0.1:8888
+
