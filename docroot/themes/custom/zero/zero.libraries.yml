@@ -1,0 +1,7 @@
+global-style:
+  version: VERSION
+  css:
+    base:
+      dist/css/base.css: {}
+  js:
+    dist/js/zero.theme.js: {}

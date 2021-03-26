@@ -1,0 +1,17 @@
+name: Zero Theme
+type: theme
+description: 'Zero is a sub-theme based on UIkit'
+core: 8.x
+base theme: uikit
+core_version_requirement: ^8 || ^9
+
+regions:
+  navbar: 'Navigation Bar'
+  offcanvas: 'Offcanvas Navigation'
+  content: Content
+  sidebar_first: 'Left Sidebar'
+  sidebar_second: 'Right Sidebar'
+  footer: 'Footer'
+
+libraries:
+  - zero/global-style
