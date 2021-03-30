@@ -105,3 +105,6 @@ deployment_identifier
 .phpcs-cache
 
 node_modules
+
+# Custom build artifacts
+/docroot/themes/custom/*/dist
