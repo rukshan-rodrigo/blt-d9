@@ -1,6 +1,7 @@
-@import '../_vars.scss';
+@import "../_vars.scss";
 
-.au-main-nav.au-main-nav--dark,
-.navigation {
-  background: $global-link-color;
+.uk-navbar-nav > li > a {
+  &:hover {
+    color: $global-link-hover-color;
+  }
 }

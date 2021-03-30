@@ -6,7 +6,10 @@ base theme: uikit
 core_version_requirement: ^8 || ^9
 
 regions:
-  navbar: 'Navigation Bar'
+  logo: 'Logo container'
+  search: 'Search container'
+  topmenu: 'Secondary menu'
+  navbar: 'Main menu'
   offcanvas: 'Offcanvas Navigation'
   content: Content
   sidebar_first: 'Left Sidebar'

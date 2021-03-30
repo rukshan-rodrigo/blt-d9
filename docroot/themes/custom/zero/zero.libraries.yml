@@ -3,5 +3,7 @@ global-style:
   css:
     base:
       dist/css/base.css: {}
+      dist/css/components/header.css: {}
+      dist/css/components/navigation.css: {}
   js:
     dist/js/zero.theme.js: {}

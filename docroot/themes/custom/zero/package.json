@@ -6,8 +6,10 @@
     "build:autoprefix": "postcss dist/css/*.css -u autoprefixer -r",
     "build:css": "node-sass --output-style compressed -r \"./src/sass/\" -o \"./dist/css/\"",
     "build:css:dev": "node-sass --output-style compact --source-map true -w src/sass/ -o dist/css/",
-    "build": "npm run build:css && npm run build:autoprefix",
-    "watch:sass": "onchange \"./src/sass/\" -- npm run build:css:dev && npm run build:autoprefix",
+    "lint:css": "stylelint \"**/*.scss\"",
+    "lint:js": "eslint \"**/*.js\"",
+    "build": "npm run lint:css && npm run build:css && npm run build:autoprefix",
+    "watch:sass": "onchange \"./src/sass/\" -- npm run lint:css && npm run build:css:dev && npm run build:autoprefix",
     "watch": "npm run build && npm-run-all --parallel watch:sass"
   },
   "license": "MIT",
@@ -15,12 +17,16 @@
     "@gov.au/pancake": "^1.4.1",
     "browser-sync": "^2.26.7",
     "npm-run-all": "^4.1.5",
-    "onchange": "^4.1.0"
+    "onchange": "^4.1.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
     "autoprefixer": "^9.0.1",
     "node-sass": "^4.12.0",
-    "postcss-cli": "^6.0.0",
+    "postcss-cli": "^8.3.1",
     "uikit": "^3.6.18"
   },
   "pancake": {
