@@ -45,3 +45,10 @@ drush:
 disable-targets:
   tests:
     security-composer: true
+command-hooks:
+  frontend-reqs:
+    dir: ${docroot}/themes/custom/zero
+    command: 'npm install'
+  frontend-assets:
+    dir: ${docroot}/themes/custom/zero
+    command: 'npm run build'
