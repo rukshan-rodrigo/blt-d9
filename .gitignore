@@ -104,9 +104,8 @@ deployment_identifier
 /files-private
 .phpcs-cache
 
-node_modules
-
 # Custom build artifacts
 /docroot/themes/custom/*/dist
+node_modules
 
 db.sqlite
