@@ -1,0 +1,5 @@
+# Schema for the configuration files of the zero theme.
+
+zero.settings:
+  type: theme_settings
+  label: 'zero settings'

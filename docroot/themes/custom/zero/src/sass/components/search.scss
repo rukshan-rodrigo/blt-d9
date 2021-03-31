@@ -1,0 +1,15 @@
+@import "../_vars.scss";
+
+form.au-search {
+  .form-actions {
+    position: relative;
+    display: table-cell;
+    width: 1%;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .au-btn {
+    text-indent: -99em;
+  }
+}

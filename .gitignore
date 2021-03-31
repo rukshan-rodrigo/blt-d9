@@ -103,3 +103,10 @@ deployment_identifier
 /travis_wait*
 /files-private
 .phpcs-cache
+
+node_modules
+
+# Custom build artifacts
+/docroot/themes/custom/*/dist
+
+db.sqlite

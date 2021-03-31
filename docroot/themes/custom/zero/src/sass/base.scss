@@ -1,0 +1,11 @@
+// 1. Your custom variables and variable overwrites.
+@import "./_vars.scss";
+
+// 2. Import default variables and available mixins.
+@import "../../node_modules/uikit/src/scss/variables.scss";
+@import "../../node_modules/uikit/src/scss/mixins.scss";
+
+// 3. Your custom mixin overwrites.
+// @mixin hook-card() { color: #000; }
+
+// Base styles for UIKit is assigned from the base theme: uikit

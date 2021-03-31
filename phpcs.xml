@@ -4,7 +4,7 @@
    @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml#the-annotated-sample-file
 -->
 <ruleset name="blt">
-  <description>Drupal Project PHP_CodeSniffer standards.</description>
+  <description>Accenture Drupal Project PHP_CodeSniffer standards.</description>
 
   <!-- By default, warnings and errors cause an exception. -->
   <config name="ignore_warnings_on_exit" value="1" />
@@ -12,6 +12,7 @@
 
   <!-- Set ignore extensions. -->
   <!-- @see https://www.drupal.org/node/2867601#comment-12075633 -->
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,info,yml"/>
   <arg name="ignore" value="*.css,*.md,*.txt,*.png,*.gif,*.jpeg,*.jpg,*.svg"/>
 
   <!-- Use colors in output. -->

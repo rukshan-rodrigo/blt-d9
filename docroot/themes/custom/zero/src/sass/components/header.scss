@@ -1,0 +1,19 @@
+@import "../_vars.scss";
+
+header .uk-logo {
+  flex: 1;
+  justify-content: left;
+
+  img {
+    width: 100px;
+  }
+}
+
+.search-block-form form {
+  display: flex;
+
+  .uk-margin {
+    margin-top: 0 !important;
+    margin-bottom: 0;
+  }
+}

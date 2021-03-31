@@ -1,0 +1,7 @@
+@import "../_vars.scss";
+
+.uk-navbar-nav > li > a {
+  &:hover {
+    color: $global-link-hover-color;
+  }
+}

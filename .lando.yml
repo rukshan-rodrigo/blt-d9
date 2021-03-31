@@ -27,9 +27,20 @@ services:
       environment:
         DRUSH_OPTIONS_URI: "http://blt-d9.lndo.site/"
         SSH_AUTH_SOCK: /run/host-services/ssh-auth.sock
+        SIMPLETEST_BASE_URL: "http://appserver"
+        SIMPLETEST_DB: "sqlite://localhost/tmp/db.sqlite"
+        MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
       cap_add:
         - SYS_ADMIN
+  chrome:
+    type: compose
+    services:
+      image: drupalci/webdriver-chromedriver:production
+      command: chromedriver --log-path=/tmp/chromedriver.log --verbose --whitelisted-ips=
 tooling:
+  test:
+    service: appserver
+    cmd: "php /app/vendor/bin/phpunit -c /app/phpunit.xml"
   blt:
     service: appserver
     cmd: /app/vendor/bin/blt
