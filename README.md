@@ -139,6 +139,12 @@ $ lando blt validate
 $ lando blt tests
 ```
 
+### How to run PHP unit tests in local.
+ ```
+$ lando test tests/phpunit/ExampleTest.php
+$ lando test docroot/core/modules/color/tests/src/Functional/ColorConfigSchemaTest.php
+```
+
 # GitLab CI/CD process overview
 ###To use GitLab CI/CD:
 
