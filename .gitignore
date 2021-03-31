@@ -108,3 +108,5 @@ node_modules
 
 # Custom build artifacts
 /docroot/themes/custom/*/dist
+
+db.sqlite
